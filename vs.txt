@@ -1,0 +1,53 @@
+[
+  {
+    "instanceId": "1e1d693a",
+    "installDate": "2025-10-29T04:17:44Z",
+    "installationName": "VisualStudio/17.14.19+36623.8",
+    "installationPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+    "installationVersion": "17.14.36623.8",
+    "productId": "Microsoft.VisualStudio.Product.Community",
+    "productPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\devenv.exe",
+    "state": 4294967295,
+    "isComplete": true,
+    "isLaunchable": true,
+    "isPrerelease": false,
+    "isRebootRequired": false,
+    "displayName": "Visual Studio Community 2022",
+    "description": "Powerful IDE, free for students, open-source contributors, and individuals",
+    "channelId": "VisualStudio.17.Release",
+    "channelUri": "https://aka.ms/vs/17/release/channel",
+    "enginePath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\resources\\app\\ServiceHub\\Services\\Microsoft.VisualStudio.Setup.Service",
+    "installedChannelId": "VisualStudio.17.Release",
+    "installedChannelUri": "https://aka.ms/vs/17/release/channel",
+    "releaseNotes": "https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-v17.14#17.14.19",
+    "resolvedInstallationPath": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community",
+    "thirdPartyNotices": "https://go.microsoft.com/fwlink/?LinkId=661288",
+    "updateDate": "2025-10-29T04:17:44.4470232Z",
+    "catalog": {
+      "buildBranch": "d17.14",
+      "buildVersion": "17.14.36623.8",
+      "id": "VisualStudio/17.14.19+36623.8",
+      "localBuild": "build-lab",
+      "manifestName": "VisualStudio",
+      "manifestType": "installer",
+      "productDisplayVersion": "17.14.19",
+      "productLine": "Dev17",
+      "productLineVersion": "2022",
+      "productMilestone": "RTW",
+      "productMilestoneIsPreRelease": "False",
+      "productName": "Visual Studio",
+      "productPatchVersion": "19",
+      "productPreReleaseMilestoneSuffix": "1.0",
+      "productSemanticVersion": "17.14.19+36623.8",
+      "requiredEngineVersion": "3.14.2086.54749"
+    },
+    "properties": {
+      "campaignId": "EpicGames_UE5",
+      "canceled": "0",
+      "channelManifestId": "VisualStudio.17.Release/17.14.19+36623.8",
+      "includeRecommended": "0",
+      "nickname": "",
+      "setupEngineFilePath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\setup.exe"
+    }
+  }
+]
