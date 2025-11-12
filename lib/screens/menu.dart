@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:football_news/widgets/left_drawer.dart';
 import 'package:football_news/screens/newslist_form.dart';
+import 'package:football_news/screens/news_entry_list.dart';
+import 'package:football_news/screens/login.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -21,7 +25,10 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Football News',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -113,37 +120,55 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+
     return Material(
       color: Theme.of(context).colorScheme.secondary,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        // Area responsif terhadap sentuhan
-        onTap: () {
-          // Memunculkan SnackBar
+        onTap: () async {
+          // Tampilkan snackbar info
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!"),
-              ),
+              SnackBar(content: Text("Kamu menekan tombol ${item.name}!")),
             );
 
-          // Navigasi ke halaman Add News
+          // Navigasi sesuai tombol
           if (item.name == "Add News") {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    const NewsFormPage(), // ✅ Sudah sesuai dengan file kamu
-              ),
+              MaterialPageRoute(builder: (context) => const NewsFormPage()),
             );
-          }   else if (item.name == "Logout") {
-            // Contoh sederhana: hapus token dan kembali ke halaman login
-            // (Pastikan kamu punya halaman login bernama LoginPage)
-            // Jika kamu menggunakan package seperti `shared_preferences`, lakukan clear data di sana.
-            Navigator.pushReplacementNamed(context, '/login');
-          }   else if (item.name == "See Football News") {
-            Navigator.pushNamed(context, '/newslist');
+          } else if (item.name == "See Football News") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const NewsEntryListPage()),
+            );
+          } else if (item.name == "Logout") {
+            final response = await request.logout(
+              "http://localhost:8000/auth/logout/",
+            );
+
+            if (context.mounted) {
+              String message = response["message"];
+              if (response["status"] == true) {
+                String uname = response["username"];
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("$message See you again, $uname."),
+                  ),
+                );
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Logout gagal: $message")),
+                );
+              }
+            }
           }
         },
         child: Container(
