@@ -137,6 +137,13 @@ class ItemCard extends StatelessWidget {
                     const NewsFormPage(), // ✅ Sudah sesuai dengan file kamu
               ),
             );
+          }   else if (item.name == "Logout") {
+            // Contoh sederhana: hapus token dan kembali ke halaman login
+            // (Pastikan kamu punya halaman login bernama LoginPage)
+            // Jika kamu menggunakan package seperti `shared_preferences`, lakukan clear data di sana.
+            Navigator.pushReplacementNamed(context, '/login');
+          }   else if (item.name == "See Football News") {
+            Navigator.pushNamed(context, '/newslist');
           }
         },
         child: Container(
